@@ -10,7 +10,7 @@ const CharacterDetails = ({ match }) => {
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
 
-  const currentCharacter = useSelector((state) => state.characters.currentCharacter);
+  const currentCharacter = useSelector((state) => state.characterState.currentCharacter);
   console.log(currentCharacter);
 
   const loadDetailsHandler = (currentCharacter) => {

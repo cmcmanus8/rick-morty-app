@@ -8,8 +8,19 @@
 .character-list-header {
   margin: 0;
   padding: 0.15rem;
+  text-align: center;
   h3 {
     margin: 0.5rem;
   }
+}
+
+.character-list-results {
+  display: flex;
+  -moz-box-pack: center;
+  justify-content: center;
+  -moz-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1920px;
 }
 
