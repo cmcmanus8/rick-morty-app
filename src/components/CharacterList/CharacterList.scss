@@ -1,0 +1,15 @@
+@import '../../styles/colors.scss';
+
+.character-list {
+  background-color: $dark-grey;
+  color: $white;
+}
+
+.character-list-header {
+  margin: 0;
+  padding: 0.15rem;
+  h3 {
+    margin: 0.5rem;
+  }
+}
+
