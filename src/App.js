@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import Login from './components/Login/Login';
+import Auth from './components/Auth/Auth.js';
 import Register from './components/Register/Register';
 import CharacterList from './components/CharacterList/CharacterList.js';
 import CharacterDetails from './components/CharacterDetails/CharacterDetails.js';
+import Navbar from './components/Navbar/Navbar.js';
 
 const App = () => {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <div className="container">
         <Switch>
-          <Route exact path="/" component={Login}/>
-          <Route exact path="/register" component={Register} />
+          <Route exact path="/" component={Auth}/>
           <Route exact path="/characters" component={CharacterList} />
           <Route exact path="/characters/:id" component={CharacterDetails} />
         </Switch>

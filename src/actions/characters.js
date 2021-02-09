@@ -43,9 +43,9 @@ export const fetchFavourites = () => async (dispatch) => {
   }
 };
 
-export const setFavourite = (id) => async (dispatch) => {
+export const setFavourite = (characterId) => async (dispatch) => {
   try {
-    const { data } = await api.setFavourite(id);
+    const { data } = await api.setFavourite(characterId);
 
     dispatch({ type: SET_FAVOURITE, payload: data })
   } catch (error) {
@@ -55,7 +55,8 @@ export const setFavourite = (id) => async (dispatch) => {
 
 export const removeFavourite = (id) => async (dispatch) => {
   try {
-    const { data } = await api.removeFavourite(id);
+    console.log("actions ---- remove fired", id);
+    await api.removeFavourite(id);
 
     dispatch({ type: REMOVE_FAVOURITE, payload: id })
   } catch (error) {

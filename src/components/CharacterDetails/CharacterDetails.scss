@@ -85,11 +85,11 @@
       color: $white;
       font-size: 5rem;
       padding-right: 10px;
+      cursor: pointer;
 
       &:active,
       &:focus {
         outline: none;
-        cursor: pointer;
       }
 
       &:hover {

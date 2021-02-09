@@ -17,7 +17,7 @@ const initialState = {
   characters: {},
   currentCharacter: null,
   loading: false,
-  favourites: [],
+  favouriteIds: [],
 }
 
 const characterReducer = (state = initialState, action) => {
@@ -35,17 +35,18 @@ const characterReducer = (state = initialState, action) => {
     case FETCH_FAVOURITES:
       return {
         ...state,
-        favourites: [...action.payload]
+        favouriteIds: [...action.payload.map((fave) => fave.characterId)]
       }
     case SET_FAVOURITE:
       return {
         ...state,
-        favourites: [...state.favourites, action.payload]
+        favouriteIds: [...state.favouriteIds, action.payload.characterId]
       }
     case REMOVE_FAVOURITE:
+      console.log("reducer+++++", action)
       return {
         ...state,
-        favourites: [...state.favourites.filter((favourite) => favourite.id !== action.payload)]
+        favouriteIds: [...state.favouriteIds.filter((favouriteId) => favouriteId!== action.payload)]
       }
     // case FETCH_CHARACTERS_SUCCESS:
     //   return {

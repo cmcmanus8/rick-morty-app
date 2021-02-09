@@ -1,22 +1,27 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch }from 'react-redux';
-import { fetchDetails, setFavourite, removeFavourite } from '../../actions/characters';
+import { fetchDetails, fetchFavourites, setFavourite, removeFavourite } from '../../actions/characters';
 import './CharacterDetails.scss';
 
-const CharacterDetails = ({ match, isFavourite }) => {
+const CharacterDetails = ({ match }) => {
   const dispatch = useDispatch();
   const { id } = match.params;
 
   useEffect(() => {
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
+  
+  useEffect(() => {
+    dispatch(fetchFavourites());
+  }, [dispatch]);
 
   const currentCharacter = useSelector((state) => state.characterState.currentCharacter);
-  console.log(currentCharacter);
+  const favouriteIdsList = useSelector((state) => state.characterState.favouriteIds);
+
+  const isFavourite = favouriteIdsList.includes(parseInt(id));
 
   const handleFavourite = (id, isFavourite) => {
-    console.log(`favourite fired ${id} and ${isFavourite}`)
-
+    console.log(isFavourite);
     !isFavourite ? dispatch(setFavourite(id)) : dispatch(removeFavourite(id))
   }
 

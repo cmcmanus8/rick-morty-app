@@ -20,7 +20,7 @@ const CharacterCard = ({ character, isFavourite }) => {
           <li className="episode">First seen in:</li>
           <li className="episode-name">{episode[0]}</li>
         </ul>
-        <div className="favourite-icon">{isFavourite && String.fromCharCode(9734)}</div>
+        <div className="favourite-icon">{isFavourite && String.fromCharCode(9733)}</div>
       </div>
     </Link>
   )

@@ -1,14 +1,16 @@
-// import { SIGN_IN, SIGN_OUT } from '../utils/constants';
+import { AUTH, LOGOUT } from '../utils/constants';
 
-// const authReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case SIGN_IN:
-//       return action.user;
-//     case SIGN_OUT:
-//       return {};
-//     default:
-//       return state;
-//   }
-// };
+const authReducer = (state = { authData: null }, action) => {
+  switch (action.type) {
+    case AUTH:
+      localStorage.setItem('profile', JSON.stringify({ ...action?.data }))
+      return { ...state, authData: action?.data };
+    case LOGOUT:
+      localStorage.clear();
+      return { ...state, authData: null };
+    default:
+      return state;
+  }
+};
 
-// export default authReducer;
+export default authReducer;

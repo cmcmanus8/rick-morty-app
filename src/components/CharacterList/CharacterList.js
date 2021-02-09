@@ -16,12 +16,18 @@ const CharacterList = () => {
   }, [dispatch]);
 
   const charactersState = useSelector((state) => state.characterState.characters);
+  const favouriteIdsList = useSelector((state) => state.characterState.favouriteIds);
+
+  const isFavouriteHandler = (id) => {
+    return (favouriteIdsList.includes(id))
+  }
 
   const loadList = (charactersState) => {
     return (
       <div className="character-list">
         <div className="character-list-header">
           <h3>Number of Results: {charactersState.info.count}</h3>
+          <p>&#9733; Favourite Characters</p>
         </div>
         <div className="character-list-results">
           {charactersState.results.map((character, index) => (
@@ -29,6 +35,7 @@ const CharacterList = () => {
               key={index.toString()}
               id={index+1}
               character={character}
+              isFavourite={isFavouriteHandler(character.id)}
             />
           ))}
         </div>
