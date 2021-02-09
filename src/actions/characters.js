@@ -1,13 +1,9 @@
 import { 
   FETCH_CHARACTERS,
   FETCH_DETAILS,
-  // FETCH_DETAILS_SUCCESS,
-  // FETCH_DETAILS_ERROR,
   SET_FAVOURITE,
   REMOVE_FAVOURITE,
   FETCH_FAVOURITES,
-  // CLEAR_DETAILS,
-  // CLEAR_LIST
  } from '../utils/constants';
 
 import * as api from '../api';

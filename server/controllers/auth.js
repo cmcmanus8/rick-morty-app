@@ -1,100 +1,74 @@
-import mongoose from 'mongoose';
-import { validateUser, isInvalidField, generateAuthToken } from '../utils/common.js';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
+import UserModel from '../db/userModel.js';
 
-export const signUp = async (req, res) => {
+export const register = async (req, res) => {
+  const { firstName, lastName, email, password, confirmPassword } = req.body;
+
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const existingUser = await UserModel.findOne({ email });
 
-    const validFieldsToUpdate = [
-      'firstName',
-      'lastName',
-      'email',
-      'password',
-    ];
-    const receivedFields = Object.keys(req.body);
-
-    // check if data coming to API contains required fields
-    const isInvalidFieldProvided = isInvalidField(
-      receivedFields,
-      validFieldsToUpdate
-    );
-
-    if (isInvalidFieldProvided) {
-      return res.status(400).send({
-        signupError: 'Invalid field.'
-      });
-    }
-    
-    // check if user already exists
-    const result = await pool.query(
-      'select count(*) as count from users where email=$1',
-      [email]
-    );
-
-    // result will be returned in rows property of result
-    const count = result.rows[0].count;
-    if (count > 0) {
-      return res.status(400).send({
-        signUpError: 'User with this email already exists.'
-      });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
     }
 
-    // insert new user if does not already exist
+    if (password === confirmPassword) {
+      return res.status(400).json({ message: "Passwords don't match" });
+    }
+
     // encrypt password before
     const hashedPassword = await bcrypt.hash(password, 8);
-    await pool.query(
-      'insert into users(first_name, last_name, email, password) values($1, $2, $3, $4)',
-      [firstName, lastName, email, hashedPassword]
-    );
-    res.status(201).send();
+
+    const result = await UserModel.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+
+    const secret = process.env.secret;
+    const token = jwt.sign({ email: result.email, id: result._id}, secret, { expiresIn: "1h" });
+
+    res.status(200).json({ result, token });
+
   } catch (error) {
-    res.status(400).send({
-      signupError: 'Error while signing up.'
-    });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
-export const signIn = async (req, res) => {
+export const signin = async (req, res) => {
+  const { email, password } = req.body;
+
   try {
-    const { email, password } = req.body;
-    const user = await validateUser(email, password);
-    if (!user) {
-      res.status(400).send({
-        signinError: 'Email/password does not match.'
-      });
+    const existingUser = await UserModel.findOne({ email });
+
+    if (!existingUser) {
+      return res.status(404).json({ message: "Cannot find user" });
     }
-    const token = await generateAuthToken(user);
-    const result = await pool.query(
-      'insert into tokens(access_token, userid) values($1, $2) returning *',
-      [token, user.userid]  
-    );
-    if (!result.rows[0]) {
-      return res.status(400).send({
-        signinError: 'Error while signing in.'
-      });
+
+    const validatePassword = await bcrypt.compare(password, existingUser.password);
+
+    if (!validatePassword) {
+      return res.status(400).json({ message: "Invalid credentials" });
     }
-    user.token = result.rows[0].access_token;
-    res.send(user);
+
+    const secret = process.env.secret;
+    const token = jwt.sign({ email: existingUser.email, id: existingUser._id}, secret, { expiresIn: "1h" });
+
+    res.status(200).json({ result: existingUser, token });
+
   } catch (error) {
-    res.status(400).send({
-      signinError: 'Email/password does not match.'
-    });
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
 
-export const logOut = async (req, res) => {
-  try {
-    const {userid, access_token } = req.user;
-    await pool.query('delete from tokens where userid=$1 and access_token=$2', [
-      userid,
-      access_token
-    ]);
-    res.send();
-  } catch (error) {
-    res.status(400).send({
-      logoutError: 'Error while logging out.'
-    });
-  }
-};
+// export const logOut = async (req, res) => {
+//   try {
+//     const {userid, access_token } = req.user;
+//     await pool.query('delete from tokens where userid=$1 and access_token=$2', [
+//       userid,
+//       access_token
+//     ]);
+//     res.send();
+//   } catch (error) {
+//     res.status(400).send({
+//       logoutError: 'Error while logging out.'
+//     });
+//   }
+// };

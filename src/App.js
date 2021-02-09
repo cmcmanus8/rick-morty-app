@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Auth from './components/Auth/Auth.js';
-import Register from './components/Register/Register';
 import CharacterList from './components/CharacterList/CharacterList.js';
 import CharacterDetails from './components/CharacterDetails/CharacterDetails.js';
 import Navbar from './components/Navbar/Navbar.js';

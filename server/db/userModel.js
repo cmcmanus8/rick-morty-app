@@ -17,10 +17,7 @@ const userSchema = new mongoose.Schema({
     max: 255,
     min: 6
   },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
+  id: { type: String }
 });
 
 const UserModel = mongoose.model('UserModel', userSchema);

@@ -2,20 +2,46 @@ import React, { useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Input from './Input.js';
 import './Auth.scss';
+import { register, signin } from '../../actions/auth.js';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+
+const initialState = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+}
 
 const Login = () => {
   const [isSignup, setIsSignup] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [passwordShown, setPasswordShown] = useState(false);
+  const eye = <FontAwesomeIcon icon={faEye} />;
 
-  const handleSubmit = () => {
-
+  const handleShowPassword = () => {
+    setPasswordShown(passwordShown ? false : true);
   };
 
-  const handleInputChange = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    if (isSignup) {
+      dispatch(register(formData, history))
+    } else {
+      dispatch(signin(formData, history))
+    }
+
+    console.log(formData);
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   const switchMode = () => {
@@ -46,46 +72,60 @@ const Login = () => {
         <form className="auth-form" onSubmit={handleSubmit}>
           {isSignup && (
             <>
-              <Input
-                id="first_name"
-                type="text"
-                name="first_name"
-                placeholder="Enter first name"
-                onChange={handleInputChange}
-              />
-              <Input
-                id="last_name"
-                type="text"
-                name="last_name"
-                placeholder="Enter last name"
-                onChange={handleInputChange}
-              />
+              <div className="form-group">
+                <input
+                  id="firstName"
+                  type="text"
+                  name="firstName"
+                  placeholder="First name"
+                  onChange={handleInputChange}
+                  required={true}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  id="lastName"
+                  type="text"
+                  name="lastName"
+                  placeholder="Last name"
+                  onChange={handleInputChange}
+                  required={true}
+                />
+              </div>
             </>
           )}
-          <Input 
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            onChange={handleInputChange}
-          />
-          <Input 
-            id="password"
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            onChange={handleInputChange}
-          />
+          <div className="form-group">
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Email address"
+              onChange={handleInputChange}
+              required={true}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              id="password"
+              type={passwordShown ? 'text' : 'password'}
+              name="password"
+              placeholder="Password"
+              onChange={handleInputChange}
+              required={true}
+            />
+            <button onClick={handleShowPassword}>{eye}</button>
+          </div>
           {isSignup && (
-            <>
-              <Input
+            <div className="form-group">
+              <input
                 id="cpassword"
                 type="password"
                 name="confirm_password"
                 placeholder="Confirm password"
                 onChange={handleInputChange}
+                required={true}
               />
-            </>
+            </div>
           )}
           <button type="submit" className="auth-button">
             {isSignup ? "Sign Up" : "Sign In"}

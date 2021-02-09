@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-// import authRoute from './routes/auth.js';
+import authRoutes from './routes/auth.js';
 import characterRoutes from './routes/characters.js';
 import dotenv from 'dotenv';
 
@@ -13,10 +13,9 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-// app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(cors());
 
-// app.use(authRoute);
+app.use('/user', authRoutes);
 app.use('/character', characterRoutes);
 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
