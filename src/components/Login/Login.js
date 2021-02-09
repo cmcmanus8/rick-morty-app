@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { validateFields } from '../utils/common';
+import { validateFields } from '../../utils/common';
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {

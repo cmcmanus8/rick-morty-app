@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CharacterCard from '../CharacterCard/CharacterCard.js';
-import { fetchCharacters } from '../../actions/characters.js';
+import { fetchCharacters, fetchFavourites } from '../../actions/characters.js';
 import './CharacterList.scss';
 
 const CharacterList = () => {
@@ -9,6 +9,10 @@ const CharacterList = () => {
 
   useEffect(() => {
     dispatch(fetchCharacters());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchFavourites());
   }, [dispatch]);
 
   const charactersState = useSelector((state) => state.characterState.characters);

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch }from 'react-redux';
-import { fetchDetails } from '../../actions/characters';
+import { fetchDetails, setFavourite, removeFavourite } from '../../actions/characters';
 import './CharacterDetails.scss';
 
 const CharacterDetails = ({ match, isFavourite }) => {
@@ -14,8 +14,14 @@ const CharacterDetails = ({ match, isFavourite }) => {
   const currentCharacter = useSelector((state) => state.characterState.currentCharacter);
   console.log(currentCharacter);
 
+  const handleFavourite = (id, isFavourite) => {
+    console.log(`favourite fired ${id} and ${isFavourite}`)
+
+    !isFavourite ? dispatch(setFavourite(id)) : dispatch(removeFavourite(id))
+  }
+
   const loadDetailsHandler = (currentCharacter, isFavourite) => {
-    const { image, name, status, species, type, gender, origin, location, episode } = currentCharacter;
+    const { id, image, name, status, species, type, gender, origin, location, episode } = currentCharacter;
     return (
       <div className="character-details">
         <img className="character-details-image" src={image} alt={name} />
@@ -30,7 +36,11 @@ const CharacterDetails = ({ match, isFavourite }) => {
           <li className="episode-name">{episode[0]}</li>
           {/* TODO: episode display handler*/}
         </ul>
-        <div className="favourite-icon">{isFavourite ? String.fromCharCode(9733) : String.fromCharCode(9734)}</div>
+        <div className="favourite-icon">
+          <button className="favourite-button" onClick={() => handleFavourite(id, isFavourite)}>
+            {isFavourite ? String.fromCharCode(9733) : String.fromCharCode(9734)}
+          </button>
+        </div>
       </div>
     )
   }

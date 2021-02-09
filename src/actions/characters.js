@@ -3,7 +3,9 @@ import {
   FETCH_DETAILS,
   // FETCH_DETAILS_SUCCESS,
   // FETCH_DETAILS_ERROR,
-  // SET_FAVE,
+  SET_FAVOURITE,
+  REMOVE_FAVOURITE,
+  FETCH_FAVOURITES,
   // CLEAR_DETAILS,
   // CLEAR_LIST
  } from '../utils/constants';
@@ -31,21 +33,36 @@ export const fetchDetails = (id) => async (dispatch) => {
   }
 };
 
-// export const fetchCharacters = () => async (dispatch) => {
-//   try {
-//     dispatch(fetchCharactersRequest());
+export const fetchFavourites = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchFavourites();
 
-//     const response = await api.fetchCharacters();
-//     const characters = response.data.results;
+    dispatch({ type: FETCH_FAVOURITES, payload: data })
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
-//     if (response && response.status === 200) {
-//       dispatch(fetchCharactersSuccess(characters));
-//     }
+export const setFavourite = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.setFavourite(id);
 
-//   } catch (error) {
-//     dispatch(fetchCharactersError(error.message));
-//   }
-// }
+    dispatch({ type: SET_FAVOURITE, payload: data })
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export const removeFavourite = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.removeFavourite(id);
+
+    dispatch({ type: REMOVE_FAVOURITE, payload: id })
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 
 // export const fetchCharactersRequest = () => {
 //   return {
@@ -76,19 +93,6 @@ export const fetchDetails = (id) => async (dispatch) => {
 //     }
 //   } catch (error) {
 //     dispatch({ type: FETCH_DETAILS_ERROR, payload: error });
-//   }
-// }
-
-// export const setFavourite = (id, favourite) => async (dispatch) => {
-//   try {
-//     const response = await api.setFavourite();
-
-//     if (response && response.status === 200) {
-//       const payload = response.data && response.data.id ? true : false;
-//       dispatch({ type: SET_FAVE, payload });
-//     }
-//   } catch (error) {
-//     console.log(error.message);
 //   }
 // }
 

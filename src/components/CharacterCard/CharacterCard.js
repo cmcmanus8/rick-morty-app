@@ -1,5 +1,4 @@
 import React from 'react';
-import PreloadImage from 'react-preload-image';
 import { Link } from 'react-router-dom';
 import './CharacterCard.scss';
 

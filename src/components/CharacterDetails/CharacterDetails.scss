@@ -6,7 +6,7 @@
   max-height: 80vh;
   display: flex;
   align-items: center;
-  border: 1px solid red;
+  // border: 1px solid red;
   overflow: break-word;
   background: $medium-grey none repeat scroll 0% 0%;
   border-radius: 0.5rem;
@@ -76,8 +76,25 @@
   .favourite-icon {
     position: relative;
     align-self: flex-start;
-    width: 50px;
-    font-size: 5rem;
     text-align: center;
+    padding: 0;
+
+    .favourite-button {
+      border: none;
+      background: transparent;
+      color: $white;
+      font-size: 5rem;
+      padding-right: 10px;
+
+      &:active,
+      &:focus {
+        outline: none;
+        cursor: pointer;
+      }
+
+      &:hover {
+        color: $light-grey;
+      }
+    }
   }
 }

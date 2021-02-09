@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 import CharacterList from './components/CharacterList/CharacterList.js';
 import CharacterDetails from './components/CharacterDetails/CharacterDetails.js';
 

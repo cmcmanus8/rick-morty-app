@@ -6,7 +6,9 @@ import {
   // FETCH_CHARACTERS_ERROR,
   // FETCH_DETAILS_SUCCESS,
   // FETCH_DETAILS_ERROR,
-  // SET_FAVE,
+  FETCH_FAVOURITES,
+  SET_FAVOURITE,
+  REMOVE_FAVOURITE,
   // CLEAR_DETAILS,
   // CLEAR_LIST
  } from '../utils/constants';
@@ -15,6 +17,7 @@ const initialState = {
   characters: {},
   currentCharacter: null,
   loading: false,
+  favourites: [],
 }
 
 const characterReducer = (state = initialState, action) => {
@@ -29,6 +32,21 @@ const characterReducer = (state = initialState, action) => {
         ...state,
         currentCharacter: action.payload
       };
+    case FETCH_FAVOURITES:
+      return {
+        ...state,
+        favourites: [...action.payload]
+      }
+    case SET_FAVOURITE:
+      return {
+        ...state,
+        favourites: [...state.favourites, action.payload]
+      }
+    case REMOVE_FAVOURITE:
+      return {
+        ...state,
+        favourites: [...state.favourites.filter((favourite) => favourite.id !== action.payload)]
+      }
     // case FETCH_CHARACTERS_SUCCESS:
     //   return {
     //     loading: false,
@@ -44,8 +62,6 @@ const characterReducer = (state = initialState, action) => {
     //   return {...state, details: payload.character, faveCharacter: payload.favourite , error: false};
     // case FETCH_DETAILS_ERROR:
     //   return {...state, error: action.error};
-    // case SET_FAVE:
-    //   return {...state, faveCharacter: payload}
     // case CLEAR_DETAILS:
     //   return {...state, details: null}
     // case CLEAR_LIST:

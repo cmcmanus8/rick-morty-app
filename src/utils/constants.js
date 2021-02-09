@@ -16,4 +16,6 @@ export const FETCH_DETAILS = 'FETCH_DETAILS';
 // db constants
 // export const SIGN_IN = 'SIGN_IN';
 // export const SIGN_OUT = 'SIGN_OUT';
-// export const SET_FAVE = 'SET_FAVE';
+export const FETCH_FAVOURITES = 'FETCH_FAVOURITES';
+export const SET_FAVOURITE = 'SET_FAVOURITE';
+export const REMOVE_FAVOURITE = 'REMOVE_FAVOURITE';
