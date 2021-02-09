@@ -1,0 +1,83 @@
+@import '../../styles/colors.scss';
+
+.character-details {
+  width: 70vw;
+  height: auto;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  border: 1px solid red;
+  overflow: break-word;
+  background: $medium-grey none repeat scroll 0% 0%;
+  border-radius: 0.5rem;
+  margin: auto;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+  rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  @media screen and (max-width: 40.625em) { 
+    flex-direction: column;
+    height: initial;
+    width: 100%;
+  }
+
+  .character-details-image {
+    border-radius: 1rem;
+    margin: 0.75rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    position: relative;
+    width: 30vw;
+    min-height: 220px;
+    margin: 0px;
+    opacity: 1;
+    transition: opacity 1s ease 0s;
+    object-position: center center;
+    object-fit: cover;
+    @media screen and (max-width: 40.625em) {
+      height: 300px;
+    }
+  }
+
+  .details-wrapper {
+    list-style-type: none;
+    flex: 3 1 0%;
+    padding-left: 2rem;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      padding-bottom: 2rem;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 4rem;
+      padding-bottom: 0;
+    }
+    .status-species-gender,
+    .location-name,
+    .origin-name {
+      font-size: 2rem;
+      padding-bottom: 1rem;
+    }
+    .location,
+    .episode,
+    .origin {
+      color: $light-grey;
+      font-size: 2rem;
+      padding-bottom: 0.5rem;
+    }
+    .episode-name {
+      font-size: 1.75rem;
+    }
+  }
+
+  .favourite-icon {
+    position: relative;
+    align-self: flex-start;
+    width: 50px;
+    font-size: 5rem;
+    text-align: center;
+  }
+}

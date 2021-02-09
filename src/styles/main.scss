@@ -1,4 +1,6 @@
-$background: #ccc;
+@import './colors.scss';
+
+$background: $dark-grey;
 
 %centered {
   display: flex;
@@ -14,10 +16,15 @@ html {
 body {
   font-family: Nunito, Helvetica Neue, Helvetica, sans-serif;
   font-size: 20px;
-  background: #d9c2ac;
-  color: #454141;
+  background: $dark-grey;
+  color: $white;
   padding: 1rem;
   letter-spacing: 1px;
+
+  .container {
+    height: 100vh;
+    display: flex;
+  }
 }
 
 .errorMessage {

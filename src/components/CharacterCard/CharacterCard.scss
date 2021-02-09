@@ -1,4 +1,5 @@
 @import '../../styles/colors.scss';
+
 .link {
   color: $light-grey;
   text-decoration: none;
@@ -9,8 +10,8 @@
     overflow: break-word;
     text-align: left;
     background: $medium-grey none repeat scroll 0% 0%;
-    border-radius: 0.5rem;
-    margin: 0.75rem;
+    border-radius: 1rem;
+    margin: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
       rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     @media screen and (max-width: 40.625em) {
@@ -19,18 +20,20 @@
       width: 100%;
     }
 
-    .preloader-wrapper {
+    .image-wrapper {
       flex: 2 1 0%;
       width: 100%;
     }
 
-    .preloader {
-      position: relative;
-      width: 220px;
-      min-height: 220px;
+    .image {
+      display: block;
+      width: 100%;
+      height: 100%;
       margin: 0px;
       opacity: 1;
-      transition: opacity 1s ease 0s;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+      transition: opacity 0.5s ease 0s;
       object-position: center center;
       object-fit: cover;
       @media screen and (max-width: 40.625em) {
@@ -70,6 +73,14 @@
       .episode-name {
         font-size: 1.4rem;
       }
+    }
+
+    .favourite-icon {
+      position: relative;
+      align-self: flex-start;
+      width: 50px;  
+      font-size: 1.5em;
+      text-align: center;
     }
   }
 }
