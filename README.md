@@ -10,25 +10,25 @@ This application was for a technical challenge and makes use of the public API o
 
 The main functionalities were required:
 
-- Login
+- Login /n
 The users need to be authenticated to consume the application. The auth must keep state between reloads. User information for login is stored in db.
-- List view
+- List view /n
 Main page is a list view of all characters with an indicator to know if a character is in the fav list.
-- Detail view
+- Detail view /n
 When character is clicked, the user will be taken to a detailed view page. A button is available to add or remove a character from a favourite list. Favourites information is stored in db.
 - 404 page
 
 These bonus functionalities were added:
 
-- Register
+- Register /n
 Sign up page was added within Auth component for new users.
-- Testing
+- Testing /n
 TODO
-- Backend pagination
+- Backend pagination /n
 TODO
-- Image preloader
+- Image preloader /n
 TODO
-- Add linter
+- Add linter /n
 TODO
 
 Further work to be done with more time:
