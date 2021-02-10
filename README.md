@@ -8,7 +8,7 @@ This application was for a technical challenge and makes use of the public API o
 
 ## Objectives
 
-The main functionalities were required:
+### The main functionalities were required:
 
 - Login\
 The users need to be authenticated to consume the application. The auth must keep state between reloads. User information for login is stored in db.
@@ -18,7 +18,7 @@ Main page is a list view of all characters with an indicator to know if a charac
 When character is clicked, the user will be taken to a detailed view page. A button is available to add or remove a character from a favourite list. Favourites information is stored in db.
 - 404 page
 
-These bonus functionalities were also specified:
+### These bonus functionalities were also specified:
 
 - Register\
 Sign up page was added within Auth component for new users.
@@ -31,7 +31,7 @@ Further work.
 - Take a beer\
 Done!
 
-Further work to be done with more time:
+### Further work to be done with more time:
 - Testing! Write unit, integration and e2e tests to check components, functionality for user flow `(Login/Register -> View Character List -> View Details -> Favourite/Unfavourite)`
 - Deploy to cloud provider
 - Episode details to populate `First seen in:` name.
