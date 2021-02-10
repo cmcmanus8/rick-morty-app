@@ -45,10 +45,10 @@ Done!
 
 ### Back end
 - Create `.env` file in `server` directory with `secret` and `CONNECTION_URL` variables. These are provided separately.
-- Open new terminal and navigate to `server`.
+- Open terminal and navigate to `server`.
 - Run `yarn start` to run app in development mode.
 - You should see a message in console log saying `Server running on port: 5000` if successful.
 
 ### Front end
-- Navigate to `src` directory in terminal, run `yarn start` to run app in development mode.
+- Open new terminal and navigate to `src` directory, run `yarn start` to run app in development mode.
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
