@@ -62,18 +62,3 @@ export const signin = async (req, res) => {
     res.status(500).json({message: "Something went wrong"});
   }
 };
-
-// export const logOut = async (req, res) => {
-//   try {
-//     const {userid, access_token } = req.user;
-//     await pool.query('delete from tokens where userid=$1 and access_token=$2', [
-//       userid,
-//       access_token
-//     ]);
-//     res.send();
-//   } catch (error) {
-//     res.status(400).send({
-//       logoutError: 'Error while logging out.'
-//     });
-//   }
-// };
