@@ -40,29 +40,6 @@ const characterReducer = (state = initialState, action) => {
         ...state,
         favouriteIds: [...state.favouriteIds.filter((favouriteId) => favouriteId!== action.payload)]
       }
-    // case FETCH_CHARACTERS_SUCCESS:
-    //   return {
-    //     loading: false,
-    //     characters: action.payload, 
-    //     error: false
-    //   };
-    // case FETCH_CHARACTERS_ERROR:
-    //   return {
-    //     ...state, 
-    //     error: action.error
-    //   };
-    // case FETCH_DETAILS_SUCCESS:
-    //   return {...state, details: payload.character, faveCharacter: payload.favourite , error: false};
-    // case FETCH_DETAILS_ERROR:
-    //   return {...state, error: action.error};
-    // case CLEAR_DETAILS:
-    //   return {...state, details: null}
-    // case CLEAR_LIST:
-    //   return initialState;
-    // case REMOVE:
-    //   return characters.filter((character) => character._id !== action.payload);
-    // case FIND_EPISODE:
-    //   return [...characters]action.payload)
     default:
       return {...state};
   }

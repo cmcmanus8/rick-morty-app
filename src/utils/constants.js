@@ -1,4 +1,4 @@
-export const BASE_API_URL = 'https://rickandmortyapi.com/api';
+// export const BASE_API_URL = 'https://rickandmortyapi.com/api';
 export const SERVER_URL = 'http://localhost:5000';
 
 // rick and morty api constants
