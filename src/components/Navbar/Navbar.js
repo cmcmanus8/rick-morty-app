@@ -38,6 +38,11 @@ const Navbar = (props) => {
 
   return (
     <div className={user ? "container-loggedin" : "container-loggedout"}>
+      {isDetailsPage && (
+        <Link className="back-button" to="/characters">
+          &#8592;
+        </Link>
+      )}
       <div className="image-wrapper">
         <Link className="nav-item" to="/characters">
           <img src={headerImage} alt="rick and morty header" />
@@ -51,11 +56,6 @@ const Navbar = (props) => {
               <Link className="logout" to="/" onClick={logout}>
                 Logout
               </Link>
-              {isDetailsPage && (
-                <Link className="back-button" to="/characters">
-                  &#8592;
-                </Link>
-              )}
             </div>
           )}
         </div>

@@ -69,3 +69,18 @@
     }
   }
 }
+
+.back-button {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  text-decoration: none;
+  font-size: 5rem;
+  color: $white;
+  font-weight: bold;
+
+  &:hover {
+    color: $orange;
+  }
+
+}

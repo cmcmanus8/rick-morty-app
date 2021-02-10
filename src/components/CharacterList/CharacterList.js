@@ -35,7 +35,7 @@ const CharacterList = () => {
     return (
       <div className="character-list">
         <div className="character-list-header">
-          <h3>Number of Results: {charactersState.info.count}</h3>
+          <h4>Number of Results: {charactersState.info.count}</h4>
           <p>&#9733; Favourite Characters</p>
         </div>
         <div className="character-list-results">
@@ -55,7 +55,11 @@ const CharacterList = () => {
   const loadMoreHandler = (info) => {
     const nextPage = info.next.split("?")[1];
     if (nextPage) {
-      return <button onClick={() => dispatch(loadMore(nextPage))}>Load More</button>;
+      return (
+        <button className="load-more-button" onClick={() => dispatch(loadMore(nextPage))}>
+          Load More
+        </button>
+      );
     }
   };
 

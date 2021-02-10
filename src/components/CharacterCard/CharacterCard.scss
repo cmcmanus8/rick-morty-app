@@ -13,8 +13,13 @@
     background: $medium-grey none repeat scroll 0% 0%;
     border-radius: 1rem;
     margin: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    @media screen and (max-width: 40.625em) {
+    box-shadow: $white 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+    &:hover {
+      box-shadow: none;
+    }
+    
+    @media screen and (max-width: 768px) {
       flex-direction: column;
       height: initial;
       width: 100%;
@@ -36,32 +41,37 @@
       transition: opacity 0.5s ease 0s;
       object-position: center center;
       object-fit: cover;
-      @media screen and (max-width: 40.625em) {
-        height: 300px;
+      
+      @media screen and (max-width: 768px) {
+        height: 200px;
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: none;
       }
     }
 
     .character-card-details {
       list-style-type: none;
-      flex: 3 1 0%;
+      flex: 3 3 0%;
       padding-left: 1rem;
-      padding-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0;
       color: $white;
       display: flex;
       flex-direction: column;
+      justify-content: center;
 
       li {
-        padding-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
       }
 
       .name {
         font-weight: bold;
-        font-size: 2.5rem;
+        font-size: 2rem;
         padding-bottom: 0;
       }
       .status-species,
       .location-name {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         padding-bottom: 1rem;
       }
       .location,
@@ -78,10 +88,14 @@
     .favourite-icon {
       position: relative;
       align-self: flex-start;
-      margin: 5px;
+      margin: 5px 10px 5px 0;
       width: 50px;
       font-size: 1.5em;
       text-align: center;
+
+      @media screen and (max-width: 768px) {
+        margin: 0;
+      }
     }
   }
 }

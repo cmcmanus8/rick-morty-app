@@ -1,5 +1,11 @@
 @import "../../styles/colors.scss";
 
+.character-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .character-list {
   background-color: $dark-grey;
   color: $white;
@@ -9,7 +15,7 @@
   margin: 0;
   padding: 0.15rem;
   text-align: center;
-  h3 {
+  h4 {
     margin: 0.5rem;
   }
   p {
@@ -25,4 +31,26 @@
   align-items: center;
   flex-wrap: wrap;
   max-width: 1920px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.load-more-button {
+  background-color: $orange;
+  width: 80%;
+  border: none;
+  margin: 10px 0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: $white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 2.5rem;
+  box-shadow: $white 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+  &:hover {
+    box-shadow: none;
+  }
 }
