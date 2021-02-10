@@ -26,6 +26,6 @@ export const setFavourite = (characterId) =>
 export const removeFavourite = (characterId) =>
   API.delete(`/character/favourites/${characterId}`);
 
-  // auth requests to db
+// auth requests to db
 export const signin = (formData) => API.post("/user/signin", formData);
 export const register = (formData) => API.post("user/register", formData);
