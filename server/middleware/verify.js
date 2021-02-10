@@ -1,29 +1,29 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 const SECRET = process.env.secret;
 
-const verify = async (req, res, next) =>  {
+const verify = async (req, res, next) => {
   try {
-  const token = req.headers.authorization.split(" ")[1];
+    const token = req.headers.authorization.split(" ")[1];
 
-  // > 500 will be Google Oauth
-  const isManualAuth = token.length < 500;
+    // > 500 will be Google Oauth
+    const isManualAuth = token.length < 500;
 
-  let decodedData;
+    let decodedData;
 
-  if (token && isManualAuth) {
-    decodedData = jwt.verify(token, SECRET);
+    if (token && isManualAuth) {
+      decodedData = jwt.verify(token, SECRET);
 
-    req.userId = decodedData?.id;
-  } else {
-    decodedData = jwt.decode(token);
+      req.userId = decodedData?.id;
+    } else {
+      decodedData = jwt.decode(token);
 
-    req.userId = decodedData?.sub;
-  }
-  
-  next();
+      req.userId = decodedData?.sub;
+    }
+
+    next();
   } catch (error) {
-    res.status(400).send('Invalid token');
+    res.status(400).send("Invalid token");
   }
 };
 

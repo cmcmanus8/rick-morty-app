@@ -1,20 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './CharacterCard.scss';
+import React from "react";
+import {Link} from "react-router-dom";
+import "./CharacterCard.scss";
 
-
-const CharacterCard = ({ character, isFavourite }) => {
-  const { id, image, name, status, species, location, episode } = character;
+const CharacterCard = ({character, isFavourite}) => {
+  const {id, image, name, status, species, location, episode} = character;
 
   return (
     <Link to={`/characters/${id}`} className="link">
       <div className="character-card">
         <div className="image-wrapper">
-          <img className="image" src={image} alt={name}/>
+          <img className="image" src={image} alt={name} />
         </div>
         <ul className="character-card-details">
           <li className="name">{name}</li>
-          <li className="status-species">{status} - {species}</li>
+          <li className="status-species">
+            {status} - {species}
+          </li>
           <li className="location">Last known location:</li>
           <li className="location-name">{location.name}</li>
           <li className="episode">First seen in:</li>
@@ -23,7 +24,7 @@ const CharacterCard = ({ character, isFavourite }) => {
         <div className="favourite-icon">{isFavourite && String.fromCharCode(9733)}</div>
       </div>
     </Link>
-  )
-}
+  );
+};
 
 export default CharacterCard;

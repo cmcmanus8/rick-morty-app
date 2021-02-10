@@ -1,5 +1,5 @@
-@import './colors.scss';
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import "./colors.scss";
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 $background: $dark-grey;
 
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 20px;
   background: $dark-grey;
   color: $white;
@@ -120,8 +120,8 @@ input {
 }
 
 button,
-input[type='button'],
-input[type='submit'],
+input[type="button"],
+input[type="submit"],
 .btn {
   font-size: 1.6rem;
 }

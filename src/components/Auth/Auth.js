@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { GoogleLogin } from 'react-google-login';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import './Auth.scss';
-import { register, signin } from '../../actions/auth.js';
+import React, {useState} from "react";
+import {GoogleLogin} from "react-google-login";
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import "./Auth.scss";
+import {register, signin} from "../../actions/auth.js";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye} from "@fortawesome/free-solid-svg-icons";
 
 const initialState = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  confirmPassword: ''
-}
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const Login = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -33,41 +33,41 @@ const Login = () => {
     e.preventDefault();
 
     if (isSignup) {
-      dispatch(register(formData, history))
+      dispatch(register(formData, history));
     } else {
-      dispatch(signin(formData, history))
+      dispatch(signin(formData, history));
     }
   };
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
 
   const switchMode = () => {
     setIsSignup(isSignup ? false : true);
-  }
+  };
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
 
     try {
-      dispatch({ type: 'AUTH', data: { result, token } });
+      dispatch({type: "AUTH", data: {result, token}});
       history.push("/characters");
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const googleFailure = (error) => {
     console.log(error);
     console.log("Google Sign In was unsuccessful. Try again later");
-  }
+  };
 
   return (
     <div className="login-container">
       <div className="login-wrapper">
-        <h5>{isSignup ? 'Create Account' : 'Sign In'}</h5>
+        <h5>{isSignup ? "Create Account" : "Sign In"}</h5>
         <form className="auth-form" onSubmit={handleSubmit}>
           {isSignup && (
             <>
@@ -106,7 +106,7 @@ const Login = () => {
           <div className="form-group">
             <input
               id="password"
-              type={passwordShown ? 'text' : 'password'}
+              type={passwordShown ? "text" : "password"}
               name="password"
               placeholder="Password"
               onChange={handleInputChange}
@@ -150,7 +150,7 @@ const Login = () => {
         </form>
       </div>
     </div>
-  )
+  );
 };
 
 export default Login;

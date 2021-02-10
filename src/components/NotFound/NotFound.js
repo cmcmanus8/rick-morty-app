@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './NotFound.scss';
+import React from "react";
+import {Link} from "react-router-dom";
+import "./NotFound.scss";
 
 const NotFound = () => {
   return (
@@ -10,12 +10,16 @@ const NotFound = () => {
           <div class="img-wrapper">
             <span>44</span>
           </div>
-          <p>The page you are trying to search has been <br /> moved to another universe.</p>
-          <Link className="home-button" to="/characters">GET ME HOME</Link>
+          <p>
+            The page you are trying to search has been <br /> moved to another universe.
+          </p>
+          <Link className="home-button" to="/characters">
+            GET ME HOME
+          </Link>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default NotFound;

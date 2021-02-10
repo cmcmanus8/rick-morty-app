@@ -1,19 +1,24 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch }from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { fetchDetails, fetchFavourites, setFavourite, removeFavourite } from '../../actions/characters';
-import './CharacterDetails.scss';
+import React, {useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {
+  fetchDetails,
+  fetchFavourites,
+  setFavourite,
+  removeFavourite,
+} from "../../actions/characters";
+import "./CharacterDetails.scss";
 
-const CharacterDetails = ({ match }) => {
+const CharacterDetails = ({match}) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { id } = match.params;
-  const user = JSON.parse(localStorage.getItem('profile'));
+  const {id} = match.params;
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
-  
+
   useEffect(() => {
     dispatch(fetchFavourites());
   }, [dispatch]);
@@ -24,23 +29,36 @@ const CharacterDetails = ({ match }) => {
   const isFavourite = favouriteIdsList.includes(parseInt(id));
 
   const handleFavourite = (id, isFavourite) => {
-    !isFavourite ? dispatch(setFavourite(id)) : dispatch(removeFavourite(id))
-  }
+    !isFavourite ? dispatch(setFavourite(id)) : dispatch(removeFavourite(id));
+  };
 
   // TODO: style a nicer alert pop-up!
   if (!user?.result?.name) {
     alert("Please sign in!");
-    history.push('/');
+    history.push("/");
   }
 
   const loadDetailsHandler = (currentCharacter, isFavourite) => {
-    const { id, image, name, status, species, type, gender, origin, location, episode } = currentCharacter;
+    const {
+      id,
+      image,
+      name,
+      status,
+      species,
+      type,
+      gender,
+      origin,
+      location,
+      episode,
+    } = currentCharacter;
     return (
       <div className="character-details">
         <img className="character-details-image" src={image} alt={name} />
         <ul className="details-wrapper">
           <li className="name">{name}</li>
-          <li className="status-species-gender">{status} - {species} {type ? `-${type}`: null} - {gender}</li>
+          <li className="status-species-gender">
+            {status} - {species} {type ? `-${type}` : null} - {gender}
+          </li>
           <li className="origin">Origin:</li>
           <li className="origin-name">{origin.name}</li>
           <li className="location">Last known location:</li>
@@ -50,20 +68,22 @@ const CharacterDetails = ({ match }) => {
           {/* TODO: episode display handler*/}
         </ul>
         <div className="favourite-icon">
-          <button className="favourite-button" onClick={() => handleFavourite(id, isFavourite)}>
+          <button
+            className="favourite-button"
+            onClick={() => handleFavourite(id, isFavourite)}
+          >
             {isFavourite ? String.fromCharCode(9733) : String.fromCharCode(9734)}
           </button>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
-  return (
-    !currentCharacter ? "Loading..." : (
-      <>
-        {loadDetailsHandler(currentCharacter, isFavourite)}
-      </>
-  ));
-}
+  return !currentCharacter ? (
+    "Loading..."
+  ) : (
+    <>{loadDetailsHandler(currentCharacter, isFavourite)}</>
+  );
+};
 
 export default CharacterDetails;

@@ -1,20 +1,20 @@
-import { 
+import {
   FETCH_CHARACTERS,
   LOAD_MORE,
   FETCH_DETAILS,
   SET_FAVOURITE,
   REMOVE_FAVOURITE,
   FETCH_FAVOURITES,
- } from '../utils/constants';
+} from "../utils/constants";
 
-import * as api from '../api';
+import * as api from "../api";
 
 // Action Creators
 export const fetchCharacters = () => async (dispatch) => {
   try {
-    const { data } = await api.fetchCharacters();
+    const {data} = await api.fetchCharacters();
 
-    dispatch({ type: FETCH_CHARACTERS, payload: data })
+    dispatch({type: FETCH_CHARACTERS, payload: data});
   } catch (error) {
     console.log(error.message);
   }
@@ -22,9 +22,9 @@ export const fetchCharacters = () => async (dispatch) => {
 
 export const loadMore = (nextPage) => async (dispatch) => {
   try {
-    const { data } = await api.loadMore(nextPage);
+    const {data} = await api.loadMore(nextPage);
 
-    dispatch({ type: LOAD_MORE, payload: data })
+    dispatch({type: LOAD_MORE, payload: data});
   } catch (error) {
     console.log(error.message);
   }
@@ -32,9 +32,9 @@ export const loadMore = (nextPage) => async (dispatch) => {
 
 export const fetchDetails = (id) => async (dispatch) => {
   try {
-    const { data } = await api.fetchDetails(id);
+    const {data} = await api.fetchDetails(id);
 
-    dispatch({ type: FETCH_DETAILS, payload: data })
+    dispatch({type: FETCH_DETAILS, payload: data});
   } catch (error) {
     console.log(error.message);
   }
@@ -42,9 +42,9 @@ export const fetchDetails = (id) => async (dispatch) => {
 
 export const fetchFavourites = () => async (dispatch) => {
   try {
-    const { data } = await api.fetchFavourites();
+    const {data} = await api.fetchFavourites();
 
-    dispatch({ type: FETCH_FAVOURITES, payload: data })
+    dispatch({type: FETCH_FAVOURITES, payload: data});
   } catch (error) {
     console.log(error.message);
   }
@@ -52,20 +52,20 @@ export const fetchFavourites = () => async (dispatch) => {
 
 export const setFavourite = (characterId) => async (dispatch) => {
   try {
-    const { data } = await api.setFavourite(characterId);
+    const {data} = await api.setFavourite(characterId);
 
-    dispatch({ type: SET_FAVOURITE, payload: data })
+    dispatch({type: SET_FAVOURITE, payload: data});
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 export const removeFavourite = (id) => async (dispatch) => {
   try {
     await api.removeFavourite(id);
 
-    dispatch({ type: REMOVE_FAVOURITE, payload: id })
+    dispatch({type: REMOVE_FAVOURITE, payload: id});
   } catch (error) {
     console.log(error.message);
   }
-}
+};

@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
-    max: 255
+    max: 255,
   },
   email: {
     type: String,
@@ -15,11 +15,11 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
     max: 255,
-    min: 6
+    min: 6,
   },
-  id: { type: String }
+  id: {type: String},
 });
 
-const UserModel = mongoose.model('UserModel', userSchema);
+const UserModel = mongoose.model("UserModel", userSchema);
 
 export default UserModel;

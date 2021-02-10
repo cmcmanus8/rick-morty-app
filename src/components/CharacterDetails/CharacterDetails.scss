@@ -1,4 +1,4 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 .character-details {
   width: 70vw;
@@ -12,9 +12,8 @@
   border-radius: 0.5rem;
   margin: auto;
   padding: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-  rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  @media screen and (max-width: 40.625em) { 
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  @media screen and (max-width: 40.625em) {
     flex-direction: column;
     height: initial;
     width: 100%;
@@ -23,8 +22,7 @@
   .character-details-image {
     border-radius: 1rem;
     margin: 0.75rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     position: relative;
     width: 30vw;
     min-height: 220px;
