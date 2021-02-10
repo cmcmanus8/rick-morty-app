@@ -47,7 +47,7 @@ const Navbar = (props) => {
         <div className="nav-item">
           {user ? (
             <div className="logged-in">
-              <div className="username">Logged in as: {user.result.name}</div>
+              <div className="username">{user.result.name}</div>
               <Link className="logout" to="/" onClick={logout}>Logout</Link>
               {isDetailsPage && (
                 <Link className="back-button" to="/characters">&#8592;</Link>

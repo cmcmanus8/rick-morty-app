@@ -1,9 +1,36 @@
+@import '../../styles/colors.scss';
+
 .navbar-container {
   display: flex;
   justify-content: center;
-  // border: 1px solid red;
+  display: flex;
+  justify-content: center;
 
   img {
     max-height: 20vh;
+  }
+
+  .logged-in {
+    position: absolute;
+    top: 1%;
+    left: 85%;
+    display: flex;
+    flex-direction: column;
+
+    .logout {
+      text-decoration: none;
+      color: $white;
+      display: flex;
+      justify-content: center;
+      border-radius: 10px;
+      background-color: $orange;
+      padding: 6px;
+      margin: 20px auto;
+      width: 8rem;
+
+      &:hover {
+        background-color: $light-grey;
+      }
+    }
   }
 }

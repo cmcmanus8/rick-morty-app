@@ -1,70 +1,50 @@
 # Rick and Morty App
 
-This application makes use of the public API of Rick & Morty: https://rickandmortyapi.com. 
+This application was for a technical challenge and makes use of the public API of Rick & Morty: https://rickandmortyapi.com.
 
-## Available Scripts
+- Front end is built in React with Redux and Hooks.
+- Back end is built in Express and is a REST API with MongoDB Database.
+- MongoDB url is provided separately.
 
-In the project directory, you can run:
+## Objectives
 
-### `yarn start`
+The main functionalities were required:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Login
+The users need to be authenticated to consume the application. The auth must keep state between reloads. User information for login is stored in db.
+- List view
+Main page is a list view of all characters with an indicator to know if a character is in the fav list.
+- Detail view
+When character is clicked, the user will be taken to a detailed view page. A button is available to add or remove a character from a favourite list. Favourites information is stored in db.
+- 404 page
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+These bonus functionalities were added:
 
-### `yarn test`
+- Register
+Sign up page was added within Auth component for new users.
+- Testing
+TODO
+- Backend pagination
+TODO
+- Image preloader
+TODO
+- Add linter
+TODO
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Further work to be done with more time:
+- Deploy to cloud provider
+- Episode details
+- User profile and having the favourites list unique to each user
 
-### `yarn build`
+## Running the app locally
+- Run `git clone https://github.com/cmcmanus8/rick-morty-app.git`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Back end
+- Create `.env` file in `server` directory with `secret` and `CONNECTION_URL` variables. These are provided separately.
+- Open new terminal and navigate to `server`.
+- Run `yarn start` to run app in development mode.
+- You should see a message in console log saying `Server running on port: 5000` if successful.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Front end
+- Navigate to `src` directory in terminal, run `yarn start` to run app in development mode.
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
