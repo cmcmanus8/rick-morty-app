@@ -13,15 +13,14 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    if (password === confirmPassword) {
+    if (password !== confirmPassword) {
       return res.status(400).json({ message: "Passwords don't match" });
     }
-
+    
     // encrypt password before
     const hashedPassword = await bcrypt.hash(password, 8);
 
     const result = await UserModel.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
-
     const secret = process.env.secret;
     const token = jwt.sign({ email: result.email, id: result._id}, secret, { expiresIn: "1h" });
 

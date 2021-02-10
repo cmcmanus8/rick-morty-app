@@ -24,7 +24,8 @@ const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const eye = <FontAwesomeIcon icon={faEye} />;
 
-  const handleShowPassword = () => {
+  const handleShowPassword = (e) => {
+    e.preventDefault();
     setPasswordShown(passwordShown ? false : true);
   };
 
@@ -36,8 +37,6 @@ const Login = () => {
     } else {
       dispatch(signin(formData, history))
     }
-
-    console.log(formData);
   };
 
   const handleInputChange = (e) => {
@@ -120,7 +119,7 @@ const Login = () => {
               <input
                 id="cpassword"
                 type="password"
-                name="confirm_password"
+                name="confirmPassword"
                 placeholder="Confirm password"
                 onChange={handleInputChange}
                 required={true}

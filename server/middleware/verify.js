@@ -2,16 +2,26 @@ import jwt from 'jsonwebtoken';
 
 const SECRET = process.env.secret;
 
-const verify = (req, res, next) =>  {
-  const token = req.header('auth-token');
-  if (!token) {
-    return res.status(401).send('Access denied, no token present');
-  }
-
+const verify = async (req, res, next) =>  {
   try {
-    const verified = jwt.verify(token, SECRET);
-    req.user = verified;
-    next();
+  const token = req.headers.authorization.split(" ")[1];
+
+  // > 500 will be Google Oauth
+  const isManualAuth = token.length < 500;
+
+  let decodedData;
+
+  if (token && isManualAuth) {
+    decodedData = jwt.verify(token, SECRET);
+
+    req.userId = decodedData?.id;
+  } else {
+    decodedData = jwt.decode(token);
+
+    req.userId = decodedData?.sub;
+  }
+  
+  next();
   } catch (error) {
     res.status(400).send('Invalid token');
   }

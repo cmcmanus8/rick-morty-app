@@ -51,7 +51,6 @@ export const setFavourite = (characterId) => async (dispatch) => {
 
 export const removeFavourite = (id) => async (dispatch) => {
   try {
-    console.log("actions ---- remove fired", id);
     await api.removeFavourite(id);
 
     dispatch({ type: REMOVE_FAVOURITE, payload: id })

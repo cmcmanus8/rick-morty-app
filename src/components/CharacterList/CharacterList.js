@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import CharacterCard from '../CharacterCard/CharacterCard.js';
 import { fetchCharacters, fetchFavourites } from '../../actions/characters.js';
 import './CharacterList.scss';
 
 const CharacterList = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const user = JSON.parse(localStorage.getItem('profile'));
 
   useEffect(() => {
     dispatch(fetchCharacters());
@@ -20,6 +23,12 @@ const CharacterList = () => {
 
   const isFavouriteHandler = (id) => {
     return (favouriteIdsList.includes(id))
+  }
+
+  // TODO: style a nicer alert pop-up!
+  if (!user?.result?.name) {
+    alert("Please sign in!");
+    history.push('/');
   }
 
   const loadList = (charactersState) => {

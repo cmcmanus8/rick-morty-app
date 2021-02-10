@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import headerImage from '../../images/header.png';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-// import { logout } from '../../actions/auth';
+import decode from 'jwt-decode';
 import './Navbar.scss';
 
 const Navbar = (props) => {
@@ -22,10 +22,19 @@ const Navbar = (props) => {
   useEffect(() => {
     const token = user?.token;
 
-    // JWT check
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
+    }
 
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
+
+  // TODO: find better way of checking if details page
+  const isDetailsPage = history.location.pathname.length > 12;
 
   return (
     <div className="navbar-container">
@@ -38,13 +47,15 @@ const Navbar = (props) => {
         <div className="nav-item">
           {user ? (
             <div className="logged-in">
-              <div className="username">{user.result.givenName}'s profile</div>
+              <div className="username">Logged in as: {user.result.name}</div>
               <Link className="logout" to="/" onClick={logout}>Logout</Link>
+              {isDetailsPage && (
+                <Link className="back-button" to="/characters">&#8592;</Link>
+              )}
             </div>
           ) : (
             <div className="logged-out">
               <Link className="login" to="/auth">Sign In or Register</Link>
-              {/* <Link className="register" to="/register">Register</Link> */}
             </div>
           )}
         </div>
@@ -54,12 +65,4 @@ const Navbar = (props) => {
   )
 }
 
-
-
-//   return (
-//     <header id="haufe-header">
-//       <Link className="nav-item" to='/' onClick={() => performLogout()}>Logout</Link>
-//     </header>
-//   )
-// }
 export default Navbar;

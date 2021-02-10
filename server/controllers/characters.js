@@ -1,6 +1,3 @@
-import express from 'express';
-import mongoose from 'mongoose';
-
 import CharacterModel from '../db/characterModel.js';
 
 export const fetchFavourites = async (req, res) => {

@@ -1,16 +1,9 @@
 import { 
   FETCH_CHARACTERS,
   FETCH_DETAILS,
-  // FETCH_CHARACTERS_REQUEST,
-  // FETCH_CHARACTERS_SUCCESS,
-  // FETCH_CHARACTERS_ERROR,
-  // FETCH_DETAILS_SUCCESS,
-  // FETCH_DETAILS_ERROR,
   FETCH_FAVOURITES,
   SET_FAVOURITE,
   REMOVE_FAVOURITE,
-  // CLEAR_DETAILS,
-  // CLEAR_LIST
  } from '../utils/constants';
 
 const initialState = {
@@ -43,7 +36,6 @@ const characterReducer = (state = initialState, action) => {
         favouriteIds: [...state.favouriteIds, action.payload.characterId]
       }
     case REMOVE_FAVOURITE:
-      console.log("reducer+++++", action)
       return {
         ...state,
         favouriteIds: [...state.favouriteIds.filter((favouriteId) => favouriteId!== action.payload)]
