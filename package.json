@@ -51,8 +51,8 @@
     }
   },
   "lint-staged": {
-    "*.+(js)": "eslint --fix",
-    "*.+(json|scss|md)": "prettier --write"
+    "*.+(js)": "yarn run eslint --fix",
+    "*.+(json|scss|md)": "yarn run prettier --write"
   },
   "prettier": {
     "printWidth": 90,
