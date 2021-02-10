@@ -1,3 +1,5 @@
+![alt text](https://github.com/cmcmanus8/rick-morty-app/blob/main/src/images/screenshot.png?raw=true)
+
 # Rick and Morty App
 
 This application was for a technical challenge and makes use of the public API of Rick & Morty: https://rickandmortyapi.com.
