@@ -1,5 +1,5 @@
 import express from 'express';
-import { fetchCharacters, fetchDetails, setFavourite, removeFavourite, fetchFavourites } from '../controllers/characters.js';
+import { fetchCharacters, loadMore, fetchDetails, setFavourite, removeFavourite, fetchFavourites } from '../controllers/characters.js';
 import verify from '../middleware/verify.js';
 
 const router = express.Router();
@@ -7,6 +7,7 @@ const router = express.Router();
 // TODO: add verify to validate each request
 //rick and morty api requests
 router.get('/fetch', fetchCharacters);
+router.get('/load/:nextPage', loadMore);
 router.get('/fetch/:id', fetchDetails);
 
 // db requests

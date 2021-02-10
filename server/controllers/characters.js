@@ -12,6 +12,17 @@ export const fetchCharacters = async (req, res) => {
   }
 };
 
+export const loadMore = async (req, res) => {
+  try {
+    const nextPage = req.params.nextPage;
+    const { data } = await axios.get(`${RM_API_URL}/character?${nextPage}`);
+    
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 export const fetchDetails = async (req, res) => {
   try {
     const { id } = req.params;

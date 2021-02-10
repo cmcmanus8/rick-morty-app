@@ -4,6 +4,7 @@ export const SERVER_URL = 'http://localhost:5000';
 // rick and morty api constants
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const FETCH_DETAILS = 'FETCH_DETAILS';
+export const LOAD_MORE = 'LOAD_MORE';
 
 // db constants
 export const AUTH = 'AUTH';

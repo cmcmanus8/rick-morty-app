@@ -17,6 +17,7 @@ API.interceptors.request.use((req) => {
 // export const fetchDetails = (id) => axios.get(`${api_url}/character/${id}`);
 
 export const fetchCharacters = () => API.get('/character/fetch');
+export const loadMore = (nextPage) => API.get(`/character/load/${nextPage}`);
 export const fetchDetails = (id) => API.get(`/character/fetch/${id}`);
 
 export const fetchFavourites = () => API.get('/character/favourites');

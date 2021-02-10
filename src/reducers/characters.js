@@ -1,5 +1,6 @@
 import { 
   FETCH_CHARACTERS,
+  LOAD_MORE,
   FETCH_DETAILS,
   FETCH_FAVOURITES,
   SET_FAVOURITE,
@@ -19,6 +20,14 @@ const characterReducer = (state = initialState, action) => {
       return {
         ...state,
         characters: {...action.payload}
+      };
+    case LOAD_MORE:
+      return {
+        ...state,
+        characters: {
+          info: action.payload.info,
+          results: [...state.characters.results].concat(action.payload.results)
+        }
       };
     case FETCH_DETAILS:
       return {

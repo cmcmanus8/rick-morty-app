@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CharacterCard from '../CharacterCard/CharacterCard.js';
-import { fetchCharacters, fetchFavourites } from '../../actions/characters.js';
+import { fetchCharacters, fetchFavourites, loadMore } from '../../actions/characters.js';
 import './CharacterList.scss';
 
 const CharacterList = () => {
@@ -49,14 +49,24 @@ const CharacterList = () => {
           ))}
         </div>
       </div>
+    )
+  }
+
+  const loadMoreHandler = (info) => {
+    const nextPage = info.next.split("?")[1];
+    if (nextPage) {
+      return (
+        <button onClick={() => dispatch(loadMore(nextPage))}>Load More</button>
       )
     }
+  }
 
   return (
     !charactersState.results ? "Loading..." : (
-      <>
+      <div className="character-list-container">
         {loadList(charactersState)}
-      </>
+        {loadMoreHandler(charactersState.info)}
+      </div>
     )
   );
 }

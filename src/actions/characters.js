@@ -1,5 +1,6 @@
 import { 
   FETCH_CHARACTERS,
+  LOAD_MORE,
   FETCH_DETAILS,
   SET_FAVOURITE,
   REMOVE_FAVOURITE,
@@ -14,6 +15,16 @@ export const fetchCharacters = () => async (dispatch) => {
     const { data } = await api.fetchCharacters();
 
     dispatch({ type: FETCH_CHARACTERS, payload: data })
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const loadMore = (nextPage) => async (dispatch) => {
+  try {
+    const { data } = await api.loadMore(nextPage);
+
+    dispatch({ type: LOAD_MORE, payload: data })
   } catch (error) {
     console.log(error.message);
   }
