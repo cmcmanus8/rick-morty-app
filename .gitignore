@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/server/node_modules
+/server/node_modules/
 /.pnp
 .pnp.js
 
@@ -11,6 +11,9 @@
 
 # production
 /build
+
+# formatting
+.eslintrc
 
 # misc
 .DS_Store

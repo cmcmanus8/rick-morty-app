@@ -25,7 +25,7 @@ Sign up page was added within Auth component for new users.
 - Testing\
 TODO
 - Backend pagination\
-TODO
+Load more button added to send request to back end to fetch next page of characters and load into same page scrolling.
 - Image preloader\
 TODO
 - Add linter\
@@ -35,6 +35,7 @@ Further work to be done with more time:
 - Deploy to cloud provider
 - Episode details
 - User profile and having the favourites list unique to each user
+- Prettier pagination
 
 ## Running the app locally
 - Run `git clone https://github.com/cmcmanus8/rick-morty-app.git`
