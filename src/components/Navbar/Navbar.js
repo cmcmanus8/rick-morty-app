@@ -37,7 +37,7 @@ const Navbar = (props) => {
   const isDetailsPage = history.location.pathname.length > 12;
 
   return (
-    <div className="navbar-container">
+    <div className={user ? "container-loggedin" : "container-loggedout"}>
       <div className="image-wrapper">
         <Link className="nav-item" to="/characters">
           <img src={headerImage} alt="rick and morty header" />
@@ -45,7 +45,7 @@ const Navbar = (props) => {
       </div>
       <div className="nav-links">
         <div className="nav-item">
-          {user ? (
+          {user && (
             <div className="logged-in">
               <div className="username">{user.result.name}</div>
               <Link className="logout" to="/" onClick={logout}>
@@ -56,12 +56,6 @@ const Navbar = (props) => {
                   &#8592;
                 </Link>
               )}
-            </div>
-          ) : (
-            <div className="logged-out">
-              <Link className="login" to="/auth">
-                Sign In or Register
-              </Link>
             </div>
           )}
         </div>

@@ -1,3 +1,77 @@
+@import "../../styles/colors.scss";
+
 .login-container {
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: 60vh;
+
+  .login-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+
+      .form-group {
+        input {
+          width: 200px;
+          border-radius: 10px;
+          border: none;
+          padding: 8px;
+          margin: 5px 0;
+
+          &#password {
+            width: 165px;
+          }
+        }
+
+        .password-button {
+          border-radius: 10px;
+          border: none;
+          margin-left: 5px;
+        }
+      }
+
+      .buttons-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .auth-button,
+        .google-button {
+          background-color: $orange;
+          border: none;
+          margin: 8px 0;
+          padding: 5px 10px;
+          border-radius: 10px;
+          color: $white;
+          cursor: pointer;
+          font-weight: bold;
+          &:hover {
+            box-shadow: $white 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+          }
+        }
+
+        .already {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: $white;
+          margin-top: 5px;
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+    }
+
+
+  }
+
+  
 }

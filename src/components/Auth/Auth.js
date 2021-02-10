@@ -67,7 +67,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-wrapper">
-        <h5>{isSignup ? "Create Account" : "Sign In"}</h5>
+        <h3>{isSignup ? "Create Account" : "Sign In"}</h3>
         <form className="auth-form" onSubmit={handleSubmit}>
           {isSignup && (
             <>
@@ -112,7 +112,9 @@ const Login = () => {
               onChange={handleInputChange}
               required={true}
             />
-            <button onClick={handleShowPassword}>{eye}</button>
+            <button onClick={handleShowPassword} className="password-button">
+              {eye}
+            </button>
           </div>
           {isSignup && (
             <div className="form-group">
@@ -126,27 +128,29 @@ const Login = () => {
               />
             </div>
           )}
-          <button type="submit" className="auth-button">
-            {isSignup ? "Sign Up" : "Sign In"}
-          </button>
-          <GoogleLogin
-            clientId="281045210355-5n9nsihk6qn0v2kl6d3k8i7208nnb7em.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <button
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                className="google-button"
-              >
-                Google Sign In
-              </button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleFailure}
-            cookiePolicy="single_host_origin"
-          />
-          <button onClick={switchMode}>
-            {isSignup ? "Already registered? Sign In" : "Not registered? Sign Up"}
-          </button>
+          <div className="buttons-wrapper">
+            <button type="submit" className="auth-button">
+              {isSignup ? "Sign Up" : "Sign In"}
+            </button>
+            <GoogleLogin
+              clientId="281045210355-5n9nsihk6qn0v2kl6d3k8i7208nnb7em.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <button
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  className="google-button"
+                >
+                  Google Sign In
+                </button>
+              )}
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
+            <button className="already" onClick={switchMode}>
+              {isSignup ? "Already registered? Sign in" : "Not registered? Sign up"}
+            </button>
+          </div>
         </form>
       </div>
     </div>
