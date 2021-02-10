@@ -11,7 +11,6 @@ import {
 
 const router = express.Router();
 
-// TODO: add verify to validate each request
 //rick and morty api requests
 router.get("/fetch", fetchCharacters);
 router.get("/load/:nextPage", loadMore);
