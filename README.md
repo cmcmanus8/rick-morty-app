@@ -18,22 +18,23 @@ Main page is a list view of all characters with an indicator to know if a charac
 When character is clicked, the user will be taken to a detailed view page. A button is available to add or remove a character from a favourite list. Favourites information is stored in db.
 - 404 page
 
-These bonus functionalities were added:
+These bonus functionalities were also specified:
 
 - Register\
 Sign up page was added within Auth component for new users.
 - Testing\
-TODO
+Further work.
 - Backend pagination\
 Load more button added to send request to back end to fetch next page of characters and load into same page scrolling.
 - Image preloader\
-TODO
-- Add linter\
-TODO
+Further work.
+- Take a beer\
+Done!
 
 Further work to be done with more time:
+- Testing! Write unit, integration and e2e tests to check components, functionality for user flow `(Login/Register -> View Character List -> View Details -> Favourite/Unfavourite)`
 - Deploy to cloud provider
-- Episode details
+- Episode details to populate `First seen in:` name.
 - User profile and having the favourites list unique to each user
 - Prettier pagination
 
