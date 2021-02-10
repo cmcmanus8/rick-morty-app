@@ -34,11 +34,13 @@ Further work.
 Done!
 
 ### Further work to be done with more time:
-- Testing! Write unit, integration and e2e tests to check components, functionality for user flow `(Login/Register -> View Character List -> View Details -> Favourite/Unfavourite)`
-- Deploy to cloud provider
+- Testing! Write unit, integration and e2e tests to check components, functionality for user flow `(Login/Register -> View Character List -> View Details -> Favourite/Unfavourite)`\
+e.g Mocha and Chai for unit or e2e testing across browsers and playforms.
+- Deploy app
 - Episode details to populate `First seen in:` name.
 - User profile and having the favourites list unique to each user
 - Prettier pagination
+- Add informative errors to be displayed in front end
 
 ## Running the app locally
 - Run `git clone https://github.com/cmcmanus8/rick-morty-app.git`
